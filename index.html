@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гадоев Файзали — AI Creator Resume</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1d34;
+      --card: rgba(255, 255, 255, 0.07);
+      --card-2: rgba(255, 255, 255, 0.1);
+      --gold: #d8ad55;
+      --gold-2: #ffd88a;
+      --text: #f3f6fb;
+      --muted: #aebbd0;
+      --line: rgba(216, 173, 85, 0.28);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(216, 173, 85, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(42, 100, 180, 0.28), transparent 35%),
+        linear-gradient(135deg, var(--bg), #030812 70%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 26px;
+    }
+
+    .sidebar,
+    .main {
+      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .profile {
+      padding: 34px;
+      background: linear-gradient(180deg, rgba(216,173,85,0.16), rgba(255,255,255,0.02));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .avatar {
+      width: 160px;
+      height: 200px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(216, 173, 85, 0.28);
+      margin-bottom: 22px;
+      background: #000;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .role {
+      color: var(--gold-2);
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .side-block {
+      padding: 28px 34px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .side-block:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--gold-2);
+    }
+
+    .portfolio-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 10px;
+      transition: 0.25s ease;
+    }
+
+    .portfolio-link:hover {
+      transform: translateX(4px);
+      border-color: var(--line);
+      background: rgba(216,173,85,0.09);
+    }
+
+    .portfolio-link strong {
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .portfolio-link span {
+      color: var(--gold-2);
+      font-weight: 800;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .pill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(216, 173, 85, 0.09);
+      color: #f9dfaa;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .main {
+      padding: 36px;
+    }
+
+    .hero {
+      min-height: 260px;
+      display: grid;
+      align-content: center;
+      padding: 34px;
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(216,173,85,0.18), rgba(11,29,52,0.9)),
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,0.14), transparent 34%);
+      border: 1px solid var(--line);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero:after {
+      content: "AI";
+      position: absolute;
+      right: -10px;
+      bottom: -70px;
+      font-size: 230px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.035);
+      letter-spacing: -0.12em;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      max-width: 650px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 17px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-title span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 22px rgba(216, 173, 85, 0.7);
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--card-2);
+      border-color: var(--line);
+    }
+
+    .card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card p,
+    li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 9px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(216,173,85,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      color: var(--gold-2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cta {
+      padding: 26px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #07111f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .cta h3 {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .cta p {
+      color: rgba(7, 17, 31, 0.78);
+      font-weight: 600;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      background: #07111f;
+      color: #fff;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .print-btn {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 10;
+      border: 1px solid var(--line);
+      background: rgba(7, 17, 31, 0.88);
+      color: var(--gold-2);
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    @media (max-width: 920px) {
+      body { padding: 18px; }
+      .page { grid-template-columns: 1fr; }
+      .grid, .stats { grid-template-columns: 1fr; }
+      .hero h2 { font-size: 32px; }
+      .cta { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+        padding: 0;
+      }
+      .page {
+        max-width: none;
+        display: block;
+      }
+      .sidebar, .main, .card, .hero, .stat {
+        box-shadow: none;
+        background: #fff;
+        color: #111;
+        border-color: #ddd;
+      }
+      .profile, .side-block, .main {
+        padding: 22px;
+      }
+      .print-btn, .cta .btn {
+        display: none;
+      }
+      .tagline, .contact-item, .card p, li, .hero p, .stat span {
+        color: #333;
+      }
+      .role, .label, .section-title span, .stat strong {
+        color: #9a6b16;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="print-btn" onclick="window.print()">Скачать / Печать PDF</button>
+
+  <div class="page">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">
+          <img src="101.jpeg" alt="Faizali" style="width:100%;height:100%;object-fit:cover;border-radius:28px;" onerror="this.style.display='none'; this.parentElement.innerHTML='GF';" />
+        </div>
+        <h1>Гадоев<br>Файзали</h1>
+        <div class="role">AI Creator • Video Producer</div>
+        <p class="tagline">Создаю рекламные ролики, AI-фильмы, мультсериалы и вирусный контент для социальных сетей.</p>
+      </div>
+
+      <div class="side-block">
+        <div class="label">Контакты</div>
+        <div class="contact-item">📍 Таджикистан</div>
+        <div class="contact-item">📸 <a href="https://www.instagram.com/maymunaka.ai_tj?igsh=bmg1OTVlcTk4b3E1" target="_blank">@maymunaka.ai_tj</a></div>
+        <div class="contact-item">🎬 <a href="https://www.instagram.com/sudba_migranta?igsh=MXRmMzBkeGJ3ZWtleg%3D%3D&utm_source=qr" target="_blank">@sudba_migranta</a></div>
+      </div>
+
+      <div class="side-block">
+        <div class="label">AI Stack</div>
+        <div class="pill-wrap">
+          <div class="pill">Veo 3.1</div>
+          <div class="pill">Nano Banana</div>
+          <div class="pill">Kling</div>
+          <div class="pill">Motion Control</div>
+          <div class="pill">Switch X</div>
+          <div class="pill">Midjourney</div>
+          <div class="pill">Grok</div>
+          <div class="pill">ElevenLabs</div>
+          <div class="pill">Omni</div>
+          <div class="pill">ChatGPT</div>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <div class="label">Форматы</div>
+        <div class="pill-wrap">
+          <div class="pill">Reels</div>
+          <div class="pill">Shorts</div>
+          <div class="pill">Ads</div>
+          <div class="pill">AI Films</div>
+          <div class="pill">Animation</div>
+          <div class="pill">Storytelling</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <h2>AI-креатор, который превращает идею в готовый видеоконтент.</h2>
+        <p>Более года практического опыта в AI-продакшне: от сценария и визуального стиля до генерации, озвучки, монтажа и публикации роликов.</p>
+      </section>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>1+ год</strong>
+          <span>практического опыта в AI-видео</span>
+        </div>
+        <div class="stat">
+          <strong>2</strong>
+          <span>активных Instagram-проекта</span>
+        </div>
+        <div class="stat">
+          <strong>Full Cycle</strong>
+          <span>сценарий, генерация, монтаж, публикация</span>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2 class="section-title"><span></span>Обо мне</h2>
+        <div class="card">
+          <p>Я AI Creator с опытом более года. Работаю почти со всеми современными AI-инструментами для создания видео, изображений, голосов и рекламного контента. Умею создавать рекламные ролики, мультяшные фильмы, драматические истории, добавлять человека в фильм или сцену, а также собирать полноценный контент под Instagram Reels, TikTok и YouTube Shorts.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title"><span></span>Ключевые навыки</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>AI-видео продакшн</h3>
+            <p>Создание видеороликов с помощью Veo, Kling, Motion Control и других AI-инструментов.</p>
+          </div>
+          <div class="card">
+            <h3>Реклама и креатив</h3>
+            <p>Разработка рекламных роликов, нативных интеграций и сценариев, которые удерживают внимание.</p>
+          </div>
+          <div class="card">
+            <h3>Мультфильмы и сериалы</h3>
+            <p>Создание анимационных историй, персонажей, сцен, диалогов и визуального стиля.</p>
+          </div>
+          <div class="card">
+            <h3>Монтаж и постпродакшн</h3>
+            <p>Сборка роликов, работа с динамикой, музыкой, озвучкой, темпом и финальной подачей.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title"><span></span>Что я могу делать</h2>
+        <div class="card">
+          <ul>
+            <li>Создавать рекламные AI-ролики под продукт, услугу или личный бренд.</li>
+            <li>Генерировать мультяшные фильмы, сериалы и драматические короткие истории.</li>
+            <li>Добавлять человека, персонажа или бренд в AI-сгенерированную сцену.</li>
+            <li>Создавать персонажей, локации, обложки, постеры и визуальный стиль проекта.</li>
+            <li>Писать сценарии под Reels с сильным хуком, эмоцией и удержанием.</li>
+            <li>Делать озвучку, голоса персонажей и атмосферное звуковое оформление.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title"><span></span>Мои аккаунты</h2>
+        <div class="grid">
+          <a class="card" href="https://www.instagram.com/maymunaka.ai_tj?igsh=bmg1OTVlcTk4b3E1" target="_blank">
+            <h3>@maymunaka.ai_tj</h3>
+            <p>AI-контент, креативные видео, эксперименты с генерацией и визуальными форматами.</p>
+          </a>
+          <a class="card" href="https://www.instagram.com/sudba_migranta?igsh=MXRmMzBkeGJ3ZWtleg%3D%3D&utm_source=qr" target="_blank">
+            <h3>@sudba_migranta</h3>
+            <p>Драматический контент, истории мигрантов, эмоциональный сторителлинг и сериализация.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title"><span></span>Мои работы</h2>
+        <div class="card">
+          <a class="portfolio-link" href="https://www.instagram.com/reel/DTAT-rqjeEv/?igsh=MWdhMjN0bXd5d3dmZw==" target="_blank">
+            <strong>Кс2 — новая карта “Рынок Корвон”</strong>
+            <span>Смотреть ↗</span>
+          </a>
+          <a class="portfolio-link" href="https://www.instagram.com/reel/DWYIawCKnGB/?igsh=MTN6emFsaW9lMmx1bw==" target="_blank">
+            <strong>Реклама Upcenter</strong>
+            <span>Смотреть ↗</span>
+          </a>
+          <a class="portfolio-link" href="https://www.instagram.com/reel/DS4a6B_DV2R/?igsh=eWpjcW52ZHBoMnF3" target="_blank">
+            <strong>ГТА Душанбе</strong>
+            <span>Смотреть ↗</span>
+          </a>
+          <a class="portfolio-link" href="https://www.instagram.com/reel/DTkqaLdCBTt/?igsh=MXZxYXM0aWVzeHppNQ==" target="_blank">
+            <strong>Блог обезьяны</strong>
+            <span>Смотреть ↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title"><span></span>Цель</h2>
+        <div class="card">
+          <p>Моя цель — создавать AI-видео, которые выглядят профессионально, вызывают эмоции, удерживают зрителя и помогают бизнесу или личному бренду получать внимание, доверие и заявки.</p>
+        </div>
+      </section>
+
+      <div class="cta">
+        <div>
+          <h3>Готов к сотрудничеству</h3>
+          <p>Рекламные ролики, AI-фильмы, Reels, мультсериалы и визуальный контент под ключ.</p>
+        </div>
+        <button class="btn" onclick="copyContact()">Скопировать Instagram</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function copyContact() {
+      const text = '@maymunaka.ai_tj | @sudba_migranta';
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.cta .btn');
+        const oldText = btn.textContent;
+        btn.textContent = 'Скопировано ✓';
+        setTimeout(() => btn.textContent = oldText, 1800);
+      }).catch(() => {
+        alert(text);
+      });
+    }
+  </script>
+</body>
+</html>
